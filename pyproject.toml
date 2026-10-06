@@ -1,0 +1,10 @@
+[project]
+name = "scanpc"
+version = "0.1.0"
+description = "PC-side pipeline and server for an offline Android 3D scanner"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -W ignore::DeprecationWarning"
+markers = ["slow: runs COLMAP on a synthetic room (about a minute on CPU)"]

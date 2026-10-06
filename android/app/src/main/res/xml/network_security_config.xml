@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The PC server is plain HTTP on the local network (token-protected). Cleartext is allowed because the PC's
+     address (192.168.x.x, 127.0.0.1 via adb reverse, hotspot 192.168.43.x) is not known in advance.
+     Never point the app at an internet-facing server. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

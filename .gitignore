@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# scan data is large and private
+sessions/
+work/
+*.db
+*.ply
+*.glb
+*.gt.json
+.scanpc/
+# android
+android/**/build/
+android/.gradle/
+android/local.properties
