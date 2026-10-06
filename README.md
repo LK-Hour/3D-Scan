@@ -8,9 +8,9 @@ AprilTags and laser-measured distances, and writes a model plus an honest accura
 > AI agents (Codex, Claude Code) should start with `AGENTS.md`.
 
 ## What accuracy to expect
-Phone-only scanning with a $30 kit gives roughly 1-3 cm locally and 2-5 cm over a whole building, **if** you scan
-slowly with overlap, good light and use tags + at least three laser distances. The report tells you the real number
-for each scan. Millimetre accuracy over a building needs a survey-grade laser scanner.
+Accuracy on a real device has not been measured yet. The synthetic-room test reports 4.1 mm RMS error across
+28 inter-tag distances, but real rooms add blur, weak texture and camera calibration errors. Use tags and held-out
+laser distances to judge each scan from its report; do not treat the synthetic result as a real-world guarantee.
 
 ## Install (PC)
 ```

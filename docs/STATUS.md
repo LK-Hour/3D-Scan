@@ -13,7 +13,7 @@ Owner values: `claude`, `codex`, `user`, `-` (unclaimed).
 | 5 | Upload server, job queue, QR pairing | claude | done | pytest + e2e over HTTP + real uvicorn smoke test |
 | 6 | CLI (`process`, `serve`, `doctor`, `token`) | claude | done | doctor + serve smoke tested |
 | 7 | Dense + Poisson on the real GPU | user/claude | **untested** | needs COLMAP CUDA on the GTX 1650 PC |
-| 8 | Android: skeleton, ARCore capture, session writer, Compose UI | claude | written, **never compiled with the Android SDK** | `core/` tested on a JVM (32 checks); capture/ui/data only syntax-checked |
+| 8 | Android: skeleton, ARCore capture, session writer, Compose UI | claude | debug APK builds; **not device-tested** | Gradle `assembleDebug` + `lintDebug`; `core/` JVM checks pass |
 | 9 | Android: uploader (resumable, QR pairing) | claude | done in `core/`, wired in UI | Kotlin client vs the real Python server: interrupted+resumed upload, job, GLB download, Range resume |
 | 10 | Real-device scan of one room vs laser distances | user | not started | first device experiment in ANDROID_SPEC |
 
@@ -39,6 +39,11 @@ Semantic detection (walls, racks), floor-plan export, change detection between s
 - Server is plain HTTP + bearer token on the LAN; do not expose it to the internet.
 
 ## Handoff log
+- 2026-10-06 Codex (Android verification): Built `:app:assembleDebug` and ran `:app:lintDebug` with the installed
+  Android SDK; both pass. Fixed locale-dependent frame numbering and added a JVM check under Arabic locale (33 checks
+  pass). Fast Python suite: 30 passed, 4 slow skipped. Corrected unsupported real-world claims in the roadmap and README.
+  No tablet, GPU, or real COLMAP CLI was tested. Next: first Pad 6S Pro scan from `docs/ANDROID_SPEC.md`; compare
+  saved-image orientation with ARCore poses in the PC report. Lint still has 10 nonfatal warnings.
 - 2026-10-06 Claude (Android): `android/` is complete as code: `core/` (pure Kotlin, JVM-tested via `android/core-tests/run.sh`),
   `capture/` (ARCore session, GL preview, frame gate, async JPEG save), `data/`, `ui/` (Compose: home/detail two-pane, scan,
   pair). The sandbox has no Android SDK/Maven, so capture/ui/data were NOT compiled: the first Android Studio sync/build may
